@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Table, Pagination } from 'semantic-ui-react'
 import ProductService from "../services/productService"
 
@@ -13,7 +14,7 @@ export default function ProductList() {
     useEffect(() => {
         let productService = new ProductService()
         productService.getProducts(activePage, pageSize).then(result => setProducts(result.data.data))
-    })
+    }, [activePage, pageSize])
 
     totalPages = Math.round(pagination.totalCount / pageSize)
 
@@ -38,7 +39,7 @@ export default function ProductList() {
                     {
                         pagination.items.map(product => (
                             <Table.Row key={product.id}>
-                                <Table.Cell>{product.productName}</Table.Cell>
+                                <Table.Cell><Link to={`/products/${product.id}`}>{product.productName}</Link></Table.Cell>
                                 <Table.Cell>{product.unitPrice}</Table.Cell>
                                 <Table.Cell>{product.unitsInStock}</Table.Cell>
                                 <Table.Cell>{product.quantityPerUnit}</Table.Cell>
@@ -46,7 +47,7 @@ export default function ProductList() {
                             </Table.Row>
                         ))
                     }
-                </Table.Body>               
+                </Table.Body>
             </Table>
             <Pagination defaultActivePage={1} totalPages={totalPages} onPageChange={onChange} />
         </div>
