@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router'
+import { ToastContainer } from 'react-toastify'
 import { Container, Grid } from 'semantic-ui-react'
 import CartDetail from '../pages/CartDetail'
 import ProductDetail from '../pages/ProductDetail'
@@ -9,6 +10,7 @@ import Categories from './Categories'
 export default function Dashboard() {
     return (
         <div>
+            <ToastContainer position="bottom-right" />
             <Container className="main">
                 <Grid>
                     <Grid.Row>
