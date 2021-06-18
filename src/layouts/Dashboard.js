@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Router } from "react-router";
 import { Container, Grid } from "semantic-ui-react";
+import { ToastContainer } from "react-toastify";
+
 import CartDetail from "../pages/CartDetail";
 import ProductDetail from "../pages/ProductDetail";
 import ProductList from "../pages/ProductList";
