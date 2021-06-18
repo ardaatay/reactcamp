@@ -9,6 +9,7 @@ import Categories from "./Categories";
 export default function Dashboard() {
     return (
         <div>
+            <ToastContainer position="bottom-right" />
             <Container className="main">
                 <Grid>
                     <Grid.Row>

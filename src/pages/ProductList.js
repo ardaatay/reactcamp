@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Table, Pagination } from 'semantic-ui-react'
+import { toast } from 'react-toastify'
+import { Table, Pagination, Button } from 'semantic-ui-react'
 import ProductService from "../services/productService"
+import { addToCart } from '../store/actions/cartActions'
 
 export default function ProductList() {
+
+    const dispatch = useDispatch()
 
     let pageSize = 10
     let totalPages
@@ -15,6 +20,12 @@ export default function ProductList() {
         let productService = new ProductService()
         productService.getProducts(activePage, pageSize).then(result => setProducts(result.data.data))
     }, [activePage, pageSize])
+
+
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+        toast.success(`${product.productName} sepete eklendi!`)
+    }
 
     totalPages = Math.round(pagination.totalCount / pageSize)
 
@@ -32,6 +43,7 @@ export default function ProductList() {
                         <Table.HeaderCell>Units In Stock</Table.HeaderCell>
                         <Table.HeaderCell>Quantity Per Unit</Table.HeaderCell>
                         <Table.HeaderCell>Category</Table.HeaderCell>
+                        <Table.HeaderCell></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -44,6 +56,8 @@ export default function ProductList() {
                                 <Table.Cell>{product.unitsInStock}</Table.Cell>
                                 <Table.Cell>{product.quantityPerUnit}</Table.Cell>
                                 <Table.Cell>{product.category.categoryName}</Table.Cell>
+                                <Table.Cell>
+                                    <Button onClick={() => handleAddToCart(product)}>Sepete Ekle</Button></Table.Cell>
                             </Table.Row>
                         ))
                     }
