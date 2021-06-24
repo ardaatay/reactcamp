@@ -19,27 +19,11 @@ export default function Dashboard() {
                             <Categories />
                         </Grid.Column>
                         <Grid.Column width={12}>
-<<<<<<< HEAD
                             <Route exact path="/" component={ProductList} />
                             <Route exact path="/products" component={ProductList} />
                             <Route exact path="/products/:id" component={ProductDetail} />
                             <Route path="/cart" component={CartDetail} />
                             <Route exact path="/product/add" component={ProductAdd} />
-=======
-                            <Router>
-                                <Route exact path="/" component={ProductList} />
-                                <Route
-                                    exact
-                                    path="/products"
-                                    component={ProductList}
-                                />
-                                <Route
-                                    path="/products/:id"
-                                    component={ProductDetail}
-                                />
-                                <Route path="/cart" component={CartDetail} />
-                            </Router>
->>>>>>> 314711884085d4bb377a3e5183c8628c8430f36d
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
