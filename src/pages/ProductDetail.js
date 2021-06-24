@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import ProductService from '../services/productService';
 import { Button, Card } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux';
